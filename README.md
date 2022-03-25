@@ -42,5 +42,7 @@ Images: https://www.pexels.com/
 ![image](https://user-images.githubusercontent.com/86012214/158964041-6efcf6a3-75f2-4709-9915-309acc874885.png)
 #### Mobile responsive
 ![image](https://user-images.githubusercontent.com/86012214/160083948-40002ea6-151f-4abe-854f-62851a9feb73.png)
+#### Tablet responsive
+![image](https://user-images.githubusercontent.com/86012214/160084152-9e63aa2b-5cd7-4cb3-bb7b-6b39dfd43c31.png)
 
 
