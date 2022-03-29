@@ -1,0 +1,153 @@
+@use '../../scss/'as *;
+
+.section {
+    width: 100%;
+    &__title {
+        margin-bottom: 10px;
+        user-select: none;
+        @include flex(center,space-between);
+        h2 {
+            display: inline;
+            margin-right: $marginRight;
+        }
+
+        .btn__trending {
+            border: 1px solid #ccc;
+            background: transparent;
+            box-shadow: none;
+            &:hover {
+                opacity: .7;
+            }
+        }
+    }
+
+    &__content {
+        text-align: center;
+        background-image: url('https://image.tmdb.org/t/p/original//iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top;
+        object-fit: cover;
+        height: 500px;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s ease-in-out;
+        transition-delay: .5s;
+
+        .trending__view {
+            cursor: pointer;
+            height: 500px;
+            @include flex(center, center);
+            flex-direction: column;
+            user-select: none;
+            // overflow: hidden;
+            &__card{
+                position: relative;
+                &__img {
+                    border-radius: $borderRadius;
+                    width: 200px;
+                    transform: scale(1);
+                    transition: transform .3s ease-in-out;
+                    object-fit: cover;
+                    box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2);
+    
+                    &:hover {
+                        transform: scale(1.1);
+                    
+                    &+.trending__view__card__more >
+                    .trending__view__card__more__button{
+                        transform:translate(10px,-15px);
+                    };
+                    
+                    &.trending__view__content > .trending__view__content__percent > .circle__percent{
+                        transform: translate(-10px,-45px);
+                        };
+
+                    }
+                }
+                &__more{
+                    position: absolute;
+                    top:5px;
+                    right:5px;
+                    z-index: 50;
+                    &__button{
+                        width:100%;
+                        @include flex(center,flex-end);
+                        transition:all .3s ease-in-out;
+                    }
+                    .more__container{
+                        display:none;
+                        &.active{
+                            display:block;
+                        }
+                    }
+
+                }
+            }
+            
+
+            &__content {
+                // margin-top:1.5rem;   
+                position: relative;
+                width: 200px;
+                text-align: center;
+                font-size: 16px;
+
+                &__percent {
+                    width: 50px;
+                    height: 50px;
+                    line-height: 50px;
+                    position: absolute;
+                    top: 0;
+                    z-index: 50;
+                    .circle__percent{
+                        transform: translateY(-70px);
+                        width:60px;
+                        border-radius:50%;
+                        height: 60px;
+                        transition:all .3s ease-in-out;
+                    }
+
+                }
+
+                &__title {
+                    margin-top: 30px;
+                    // overflow-wrap: break-word;
+                    height: 50px;
+                    font-weight: 600;
+                    font-size: 1rem;
+                    // line-height: 50px;
+                    width: 100%;
+                    &:hover{
+                        color:$mainColor;
+                    }
+                    
+                }
+                &__date{
+                    color:rgba(211, 217, 223, 0.7);
+                }
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            @include overlay;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            @include overlayGradient($bodyBg, $black);
+            }
+    }
+}

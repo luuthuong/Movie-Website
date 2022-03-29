@@ -1,0 +1,89 @@
+@use '../../scss/'as *;
+.card-container{
+    width: 200px;
+}
+.card-item{
+    width:200px;
+    height:300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    border-radius:16px;
+    box-shadow:#494241 0 0 5px 1px;
+    @include flex(center,center);
+    position: relative;
+    overflow: hidden;
+
+    &__button{
+        opacity: 0;
+        position: relative;
+        z-index: 10;
+        transform: translateY(-50px);
+        height:auto;
+        width:fit-content;
+        transition: transform 0.3s ease-in-out, opacity .3s ease-in-out;
+        .button {
+            width: fit-content;
+            height: auto;
+            background-color:transparent;
+            line-height: 100px;
+            transition:color .3s linear;
+            transition-delay: .5s ;
+            @include flex(center, center);
+            text-align: center;
+            i{
+                font-size: 4rem;
+                color:#fff;
+                opacity: .6;
+                transition:color .2s linear , opacity .2s linear;
+                text-shadow: 0 0 5px #fff;
+                &:hover{
+                    color:$mainColor;
+                    opacity: 1;
+                    text-shadow: 0 0 5px $mainColor;
+                }
+            }
+            &:hover{
+                box-shadow: none;
+            }
+        }
+        
+        
+    }
+    &::after{
+        content: "";
+        background-color:transparent;
+        position:absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        transition: background-color 0.3s linear;
+    }
+    &:hover::after{
+        background-color:rgba(59, 59, 68, 0.911);
+    }
+    &:hover .card-item__button {
+        opacity: 1;
+        transform:translateY(0);
+    }
+   
+}
+.infor-item{
+    position: relative;
+    z-index: 10;
+    color: $white;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 600;
+    transition: color .3s linear;
+    height:3rem;
+    width:100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top:1rem;
+    &:hover{
+        color:$mainColor;
+    }
+}

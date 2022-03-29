@@ -1,0 +1,77 @@
+@use '../../scss/' as *;
+footer{
+    height:300px;
+    @include flex(center,center);
+    user-select: none;
+    overflow: hidden;
+    .footer{
+        height:100%;
+        padding-top:10px;
+        position:relative;
+        &__social{
+            font-size: 2.5rem;
+            a > i{
+                color: $white;
+                margin-right: 10px;
+                transition:opacity .3s linear;
+                &:hover{
+                    opacity: .7;
+                }
+            }
+        }
+        &__content {
+            @include flex(flex-start, center);
+            .content{
+                & >a{
+                    width: 100%;
+                    display:block;
+                    color:#808080;
+                    font-weight: 400;
+                    margin-top:.5rem;
+                    font-size: 1rem;
+                    &:hover{
+                        color:red;
+                    }
+                }
+            }
+            & >*~*{
+                margin:0 3rem;
+            }
+        }
+        @include tablet{
+            &__social{
+                font-size: 1.5rem;
+            }
+            &__content{
+                .title{
+                    font-size: .8rem;
+                }
+                .content{
+                    & >a{
+                        font-size: .8rem;
+                    }
+                }
+                & >*~*{
+                    margin:0 1rem;
+                }
+            }
+        }
+        &__copyright{
+            display:inline;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%,0);
+            bottom:20px;
+            & a{
+            color:#808080;
+            line-height: 1rem;
+            @include flex(center,center);
+            height: 1rem;
+            span{
+                margin-left: 5px;
+                color:#808080;
+            }
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+@use '../../scss/' as *;
+
+.selector {
+    @include flex(center, flex-start);
+    position: fixed;
+    top:70px;
+    left:10px;
+    z-index: 2;
+    opacity: .3;
+    transition: opacity 0.3s linear;
+    &__wrap {
+        @include flex(center, unset);
+        &__content {
+            @include flex(center, unset);
+            border-radius:$borderRadius;
+            border: 2px solid #fff;
+            box-shadow:$boxShadow;
+            height:35px;
+            margin-left:20px;
+            overflow: hidden;
+            button{
+                background-color:transparent;
+                border:none;
+                height:100%;
+                color:#fff;
+                font-weight: 800;
+                font-size: 18px;
+                width:100px;
+                text-align:center;
+                border-radius: $borderRadius;
+                transition: all .3s ease-in-out;
+                &:hover{
+                    color:$mainColor;
+                }
+                &.active{
+                    background-color:#fff;
+                    color:$mainColor;
+                }
+            }
+            
+        }
+
+
+    }
+    &:hover{
+        opacity: 1;
+    }
+}

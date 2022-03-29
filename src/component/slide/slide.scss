@@ -1,0 +1,165 @@
+@use '../../scss/'as *;
+
+.slide {
+    margin-top: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    position: relative;
+    user-select:none;
+    overflow: hidden;
+    &__item {
+        // padding: 5rem 0;
+        width: 100%;
+        height: 100vh;
+        background-position: top;
+        position: relative;
+        background-size: 100vw 100vh;
+        background-repeat: no-repeat;
+        object-fit: cover;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            @include overlay;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            @include overlayGradient($bodyBg, $black);
+        }
+
+        &__content {
+            @include flex(center, center);
+            position: relative;
+            z-index: 1;
+            opacity: 1;      
+            transition:opacity .5s ease-in-out;      
+            &__infor {
+                width: 40%;
+                padding: 5px 3rem;
+                position: relative;
+
+                &>*~* {
+                    margin-top: 4rem;
+                }
+
+                .title {
+                    line-height: 1;
+                    font-weight: 700;
+                    font-size: 2.5rem;
+                }
+
+                .overview {
+                    width: 100%;
+                    max-height: 300px;
+                    overflow-y: scroll;
+                    font-size: 20px;
+                    font-weight: 300;
+                    color: rgb(218, 211, 211);
+                    // line-height: 1;
+                    @include mobile{
+                        font-size: 14px;
+                    }
+                }
+
+                .btnGroup {
+                    @include flex(center, center);
+
+                    &>*~* {
+                        margin-left: 1rem;
+
+                        @include mobile {
+                            display: none;
+                        }
+                    }
+                }
+
+                .title,
+                .btnGroup,
+                .overview {
+                    transform: translate(-250px,200px);
+                    transition: all .5s ease-in-out;
+                    opacity: 0;
+                }
+
+            }
+
+            &__poster {
+                flex: 1;
+                position: relative;
+                transform: translateY(150px);
+                @include flex(center, flex-start);
+
+                img {
+                    width: 450px;
+                    object-fit: cover;
+                    border-radius: 1rem;
+                    box-shadow: $boxShadow;
+                    transform: scale(0);
+                    transition: all 1s ease-in-out;
+                }
+
+                @include tablet {
+                    display: none;
+                }
+
+                @include mobile {
+                    display: none;
+                }
+            }
+            &.blur{
+                opacity: 0;
+            }
+        }
+
+        &.active>.slide__item__content>&__content__poster {
+            img {
+                transform: scale(1);
+            }
+        }
+
+        &.active>.slide__item__content>&__content__infor {
+
+            .title,
+            .btnGroup,
+            .overview {
+                opacity: 1;
+                transform: translate(0,200px);
+            }
+
+            .title {
+                transition-delay: 0.3s;
+            }
+
+            .overview, .btnGroup  {
+                transition-delay: 1s;
+            }
+        }
+    }
+    &__overview {
+    
+        &:hover{
+            .swiper-button-next, .swiper-button-prev{
+                opacity: 1;
+            }
+        }
+    }
+    
+}
+.swiper-button-next, .swiper-button-prev{
+    color:red;
+    opacity:0;
+    transition:opacity .3s ease-in-out;
+}
+.swiper-pagination{
+    opacity: 0;
+}
