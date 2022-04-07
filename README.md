@@ -2,7 +2,8 @@
 
 Responsive React Movies App With API https://www.themoviedb.org/
 
-## Video Preview
+## Link demo
+ https://net-flixer.web.app/
 
 
 ### Resource
